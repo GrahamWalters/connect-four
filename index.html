@@ -17,6 +17,19 @@
   .sidebar-nav {
     padding: 9px 0;
   }
+  .box {
+    background-color: #ddd;
+    height: 95px;
+    width: 14.28%;
+  }
+  .coin {
+    background-color: #ff3;
+    height: 100%;
+    width: 100%;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100%;
+    border-radius: 100%;
+  }
   </style>
   <link href="/css/bootstrap-responsive.css" rel="stylesheet">
 
@@ -58,7 +71,7 @@
     </div>
   </div>
 
-  <div class="container-fluid">
+  <div class="container">
     <div class="row-fluid">
       <div class="span3">
         <div class="well sidebar-nav">
@@ -82,15 +95,12 @@
           </ul>
         </div><!--/.well -->
       </div><!--/span-->
-      <div class="span9">
-        <div class="well">
-          <h1>Hello, world!</h1>
-          <p>This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-          <p><a class="btn btn-primary btn-large">Learn more &raquo;</a></p>
-        </div>
 
-        <div id="table-grid">
-        </div>
+      <div class="span9 well">
+
+        <table id="table-grid" width="100%">
+
+        </table>
 
       </div><!--/span-->
     </div><!--/row-->
@@ -125,11 +135,11 @@
    * Comment
    */
    for (var r=0; r<6; r++) {
-      $("#table-grid").append('<div id="row-'+r+'" class="row-fluid">');
+      $("#table-grid").append('<tr id="row-'+r+'" class="">');
       $row = $("#row-"+r);
 
       for (var c=0; c<7; c++) {
-        $row.append('<div class="span1 test" id="r'+r+'c'+c+'">bla</div>')
+        $row.append('<td class="box" id="r'+r+'c'+c+'"><div class="coin"></div></td>')
       }
     }
    </script>
