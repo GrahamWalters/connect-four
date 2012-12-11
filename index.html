@@ -146,19 +146,35 @@
   <script src="/js/bootstrap-typeahead.js"></script>
 
   <script type="text/javascript">
+  var state = new Array(7);
+  for (var c=0; c<7; c++) {
+    state[c] = new Array(6);
+    for (var r=0; r<6; r++)
+      state[c][r] = new Array(2);
+  }
+
+
   /* 
    * Drop the coin function.
    */
    function drop(r, c, t) {
-    $(t).find('.coin').html('<img class="grid-box-coin" src="/img/coins/coin1.gif" />');
-    $(t).find('.grid-box-number').css('display', 'block');
+    var low = 0;
+    for (var i=0; i<state[c].length; i++)
+      if (state[c][i][0] != null)
+        low = i+1;
+
+    if(low < 6) {
+      $('#r'+low+'c'+c).find('.coin').html('<img class="grid-box-coin" src="/img/coins/coin2.gif" />');
+      $('#r'+low+'c'+c).find('.grid-box-number').css('display', 'block');
+      state[c][low][0] = 'p1';
+    }
   }
 
   /* 
    * Comment
    */
    for (var r=0; r<6; r++) {
-      $("#table-grid").append('<tr id="row-'+r+'" class="">');
+      $("#table-grid").prepend('<tr id="row-'+r+'" class="">');
       $row = $("#row-"+r);
 
       for (var c=0; c<7; c++) {
@@ -173,6 +189,7 @@
               '<div class="grid-box-number">'+number+'</div>'+
             '</div>'+
           '</td>');
+        state[c][r][1] = number;
       }
     }
    </script>
