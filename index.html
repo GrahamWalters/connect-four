@@ -30,6 +30,8 @@
     -webkit-border-radius: 100px;
     -moz-border-radius: 100%;
     border-radius: 100%;
+    text-align: center;
+    font-size: 18px;
   }
   </style>
   <link href="/css/bootstrap-responsive.css" rel="stylesheet">
@@ -94,6 +96,7 @@
             <li><a href="#">Link</a></li>
             <li><a href="#">Link</a></li>
           </ul>
+          <span id="timer"></span>
         </div><!--/.well -->
       </div><!--/span-->
 
@@ -132,6 +135,7 @@
   <script src="/js/bootstrap-typeahead.js"></script>
 
   <script type="text/javascript">
+
   /* 
    * Comment
    */
@@ -140,7 +144,8 @@
       $row = $("#row-"+r);
 
       for (var c=0; c<7; c++) {
-        $row.append('<td class="box" id="r'+r+'c'+c+'"><div class="coin"></div></td>')
+        var number = Math.floor((Math.random()*100)+0);
+        $row.append('<td class="box" id="r'+r+'c'+c+'"><div class="coin"><br />'+number+'</div></td>')
       }
     }
    </script>
