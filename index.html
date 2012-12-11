@@ -37,6 +37,7 @@
     max-width: 82%;
   }
   .grid-box-number {
+    display: none;
     position: absolute;
     top:  40%;
     width: 100%;
@@ -150,6 +151,7 @@
    */
    function drop(r, c, t) {
     $(t).find('.coin').html('<img class="grid-box-coin" src="/img/coins/coin1.gif" />');
+    $(t).find('.grid-box-number').css('display', 'block');
   }
 
   /* 
