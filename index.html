@@ -112,6 +112,7 @@
       </div><!--/span-->
 
       <div class="span9 well">
+        <img id="loading" src="/img/ajax-loader.gif" />
 
         <table id="table-grid" width="100%">
 
@@ -164,7 +165,7 @@
    * @param r - the row
    * @param c - the column
    */
-   function drop(r, c) {
+  function drop(r, c) {
     var low = 0;
     for (var i=0; i<state[c].length; i++)
       if (state[c][i][0] != null)
@@ -180,7 +181,8 @@
   /* 
    * Comment
    */
-   for (var r=0; r<6; r++) {
+  $(document).ready(function() {
+    for (var r=0; r<6; r++) {
       $("#table-grid").prepend('<tr id="row-'+r+'" class="">');
       $row = $("#row-"+r);
 
@@ -199,6 +201,8 @@
         state[c][r][1] = number;
       }
     }
-   </script>
- </body>
- </html>
+    $('#loading').css('display','none');
+  });
+  </script>
+</body>
+</html>
