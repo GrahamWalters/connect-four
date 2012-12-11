@@ -146,6 +146,11 @@
   <script src="/js/bootstrap-typeahead.js"></script>
 
   <script type="text/javascript">
+  /* 
+   * state - the board state.
+   * [column][row][0] = player
+   * [column][row][0] = number
+   */
   var state = new Array(7);
   for (var c=0; c<7; c++) {
     state[c] = new Array(6);
@@ -156,8 +161,10 @@
 
   /* 
    * Drop the coin function.
+   * @param r - the row
+   * @param c - the column
    */
-   function drop(r, c, t) {
+   function drop(r, c) {
     var low = 0;
     for (var i=0; i<state[c].length; i++)
       if (state[c][i][0] != null)
@@ -181,7 +188,7 @@
         var number = Math.floor((Math.random()*25)+1);
         $row.append(
           '<td class="box" id="r'+r+'c'+c+'">'+
-            '<div class="grid-box" onclick="drop('+r+','+c+', this);">'+
+            '<div class="grid-box" onclick="drop('+r+','+c+');">'+
               '<div class="grid-box-hack">'+
                 '<img class="grid-box-img" src="/img/grid.png" />'+
               '</div>'+
