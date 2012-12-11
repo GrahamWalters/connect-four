@@ -17,14 +17,23 @@
   .sidebar-nav {
     padding: 9px 0;
   }
-  .box {
-    /*background-color: #ddd;*/
-    height: 95px;
-    width: 14.28%;
+  #table-grid {
+    position: relative;
+  }
+  .grid-box {
+    position: relative;
+  }
+  .grid-box-img {
+    width: 100%;
+  }
+  .grid-box-number {
+    position: absolute;
+    top:  40%;
+    left: 40%;
+    font-size: 18px;
   }
   .coin {
-    margin:5%;
-    background-color: #ff3;
+    margin: 5%;
     height: 90%;
     width: 90%;
     -webkit-border-radius: 100px;
@@ -145,9 +154,17 @@
 
       for (var c=0; c<7; c++) {
         var number = Math.floor((Math.random()*100)+0);
-        $row.append('<td class="box" id="r'+r+'c'+c+'"><div class="coin"><br />'+number+'</div></td>')
+        $row.append('<td class="box" id="r'+r+'c'+c+'">'+
+          '<div class="grid-box">'+
+          '<img class="grid-box-img" src="/img/grid.png" />'+
+          '<div class="grid-box-number">'+number+'</div>'+
+          '</div>'+
+          '</td>');
       }
     }
+
+    // $('#table-grid').width();
+    // $('.box').css('height',$('#table-grid').width()/7);
    </script>
  </body>
  </html>
