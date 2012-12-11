@@ -23,22 +23,23 @@
   .grid-box {
     position: relative;
   }
+  .grid-box-hack {
+    width: 100%;
+    height: 100%;
+  }
   .grid-box-img {
     width: 100%;
+  }
+  .grid-box-coin {
+    position: absolute;
+    top:  10%;
+    left: 10%;
+    max-width: 82%;
   }
   .grid-box-number {
     position: absolute;
     top:  40%;
-    left: 40%;
-    font-size: 18px;
-  }
-  .coin {
-    margin: 5%;
-    height: 90%;
-    width: 90%;
-    -webkit-border-radius: 100px;
-    -moz-border-radius: 100%;
-    border-radius: 100%;
+    width: 100%;
     text-align: center;
     font-size: 18px;
   }
@@ -144,6 +145,12 @@
   <script src="/js/bootstrap-typeahead.js"></script>
 
   <script type="text/javascript">
+  /* 
+   * Drop the coin function.
+   */
+   function drop(r, c, t) {
+    $(t).find('.coin').html('<img class="grid-box-coin" src="/img/coins/coin1.gif" />');
+  }
 
   /* 
    * Comment
@@ -153,18 +160,19 @@
       $row = $("#row-"+r);
 
       for (var c=0; c<7; c++) {
-        var number = Math.floor((Math.random()*100)+0);
-        $row.append('<td class="box" id="r'+r+'c'+c+'">'+
-          '<div class="grid-box">'+
-          '<img class="grid-box-img" src="/img/grid.png" />'+
-          '<div class="grid-box-number">'+number+'</div>'+
-          '</div>'+
+        var number = Math.floor((Math.random()*25)+1);
+        $row.append(
+          '<td class="box" id="r'+r+'c'+c+'">'+
+            '<div class="grid-box" onclick="drop('+r+','+c+', this);">'+
+              '<div class="grid-box-hack">'+
+                '<img class="grid-box-img" src="/img/grid.png" />'+
+              '</div>'+
+              '<div class="coin"></div>'+
+              '<div class="grid-box-number">'+number+'</div>'+
+            '</div>'+
           '</td>');
       }
     }
-
-    // $('#table-grid').width();
-    // $('.box').css('height',$('#table-grid').width()/7);
    </script>
  </body>
  </html>
