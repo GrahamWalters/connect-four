@@ -163,6 +163,20 @@
       state[c][r] = new Array(2);
   }
 
+  function line() {
+    var line = 0;
+    for (var r=0; r<6; r++) {
+      for (var c=0; c<7; c++) {
+        if (state[c][r][0] == turn)
+          line ++;
+        else
+          line = 0;
+        if (line == 4)
+          console.log(line);
+      }
+    }
+  }
+
 
   /* 
    * Drop the coin function.
@@ -178,7 +192,9 @@
     if(low < 6) {
       $('#r'+low+'c'+c).find('.coin').html('<img class="grid-box-coin" src="/img/coins/coin'+window[turn+'coin']+'.gif" />');
       $('#r'+low+'c'+c).find('.grid-box-number').css('display', 'block');
-      state[c][low][0] = 'p1';
+      state[c][low][0] = turn;
+
+      line();
 
       if (turn == 'P1')
         turn = 'P2';
