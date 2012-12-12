@@ -147,6 +147,10 @@
   <script src="/js/bootstrap-typeahead.js"></script>
 
   <script type="text/javascript">
+  var P1coin = 1;
+  var P2coin = 2;
+  var turn = 'P1';
+
   /* 
    * state - the board state.
    * [column][row][0] = player
@@ -172,9 +176,14 @@
         low = i+1;
 
     if(low < 6) {
-      $('#r'+low+'c'+c).find('.coin').html('<img class="grid-box-coin" src="/img/coins/coin2.gif" />');
+      $('#r'+low+'c'+c).find('.coin').html('<img class="grid-box-coin" src="/img/coins/coin'+window[turn+'coin']+'.gif" />');
       $('#r'+low+'c'+c).find('.grid-box-number').css('display', 'block');
       state[c][low][0] = 'p1';
+
+      if (turn == 'P1')
+        turn = 'P2';
+      else
+        turn = 'P1'
     }
   }
 
