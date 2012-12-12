@@ -165,6 +165,7 @@
 
   function line() {
     var line = 0;
+    /* ROWS */
     for (var r=0; r<6; r++) {
       for (var c=0; c<7; c++) {
         if (state[c][r][0] == turn)
@@ -172,7 +173,18 @@
         else
           line = 0;
         if (line == 4)
-          console.log(line);
+          return true;
+      }
+    }
+    /* COLUMN */
+    for (var c=0; c<7; c++) {
+      for (var r=0; r<6; r++) {
+        if (state[c][r][0] == turn)
+          line ++;
+        else
+          line = 0;
+        if (line == 4)
+          return true;
       }
     }
   }
@@ -194,7 +206,8 @@
       $('#r'+low+'c'+c).find('.grid-box-number').css('display', 'block');
       state[c][low][0] = turn;
 
-      line();
+      if (line())
+        alert(turn + " Wins!!!");
 
       if (turn == 'P1')
         turn = 'P2';
