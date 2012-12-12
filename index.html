@@ -150,6 +150,7 @@
   var P1coin = 2;
   var P2coin = 4;
   var turn = 'P1';
+  var numbers = {};
 
   /* 
    * state - the board state.
@@ -168,10 +169,13 @@
     /* ROWS */
     for (var r=0; r<6; r++) {
       for (var c=0; c<7; c++) {
-        if (state[c][r][0] == turn)
+        if (state[c][r][0] == turn) {
+          numbers[line] = state[c][r][1];
           line ++;
-        else
+        } else {
+          numbers = {};
           line = 0;
+        }
         if (line == 4)
           return true;
       }
@@ -179,10 +183,13 @@
     /* COLUMN */
     for (var c=0; c<7; c++) {
       for (var r=0; r<6; r++) {
-        if (state[c][r][0] == turn)
+        if (state[c][r][0] == turn) {
+          numbers[line] = state[c][r][1];
           line ++;
-        else
+        } else {
+          numbers = {};
           line = 0;
+        }
         if (line == 4)
           return true;
       }
@@ -191,10 +198,13 @@
     /* Bottom left to top right */
     for (var r=0; r<=2; r++) {
       for (var d=0; d<(6-r); d++) {
-        if (state[d][d+r][0] == turn)
+        if (state[d][d+r][0] == turn) {
+          numbers[line] = state[d][d+r][1];
           line ++;
-        else
+        } else {
+          numbers = {};
           line = 0;
+        }
         if (line == 4)
           return true;
       }
@@ -203,10 +213,13 @@
 
     for (var c=1; c<=3; c++) {
       for (var d=0; d<(7-c); d++) {
-        if (state[d+c][d][0] == turn)
+        if (state[d+c][d][0] == turn) {
+          numbers[line] = state[d+c][d][1];
           line ++;
-        else
+        } else {
+          numbers = {};
           line = 0;
+        }
         if (line == 4)
           return true;
       }
@@ -215,10 +228,13 @@
     /* Top left to bottom right */
     for (var r=0; r<=2; r++) {
       for (var d=0; d<(6-r); d++) {
-        if (state[d][5-r-d][0] == turn)
+        if (state[d][5-r-d][0] == turn) {
+          numbers[line] = state[d][5-r-d][1];
           line ++;
-        else
+        } else {
+          numbers = {};
           line = 0;
+        }
         if (line == 4)
           return true;
       }
@@ -227,10 +243,13 @@
 
     for (var c=1; c<=3; c++) {
       for (var d=0; d<(7-c); d++) {
-        if (state[d+c][5-d][0] == turn)
+        if (state[d+c][5-d][0] == turn) {
+          numbers[line] = state[d+c][5-d][1];
           line ++;
-        else
+        } else {
+          numbers = {};
           line = 0;
+        }
         if (line == 4)
           return true;
       }
