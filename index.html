@@ -147,8 +147,8 @@
   <script src="/js/bootstrap-typeahead.js"></script>
 
   <script type="text/javascript">
-  var P1coin = 1;
-  var P2coin = 2;
+  var P1coin = 2;
+  var P2coin = 4;
   var turn = 'P1';
 
   /* 
@@ -188,7 +188,8 @@
       }
     }
     /* DIAGONAL */
-    for (var r=0; r<6; r++) {
+    /* Bottom left to top right */
+    for (var r=0; r<=2; r++) {
       for (var d=0; d<(6-r); d++) {
         if (state[d][d+r][0] == turn)
           line ++;
@@ -200,9 +201,33 @@
       line = 0;
     }
 
-    for (var c=0; c<6; c++) {
-      for (var d=0; d<(6-c); d++) {
-        if (state[d+c+1][d][0] == turn)
+    for (var c=1; c<=3; c++) {
+      for (var d=0; d<(7-c); d++) {
+        if (state[d+c][d][0] == turn)
+          line ++;
+        else
+          line = 0;
+        if (line == 4)
+          return true;
+      }
+      line = 0;
+    }
+    /* Top left to bottom right */
+    for (var r=0; r<=2; r++) {
+      for (var d=0; d<(6-r); d++) {
+        if (state[d][5-r-d][0] == turn)
+          line ++;
+        else
+          line = 0;
+        if (line == 4)
+          return true;
+      }
+      line = 0;
+    }
+
+    for (var c=1; c<=3; c++) {
+      for (var d=0; d<(7-c); d++) {
+        if (state[d+c][5-d][0] == turn)
           line ++;
         else
           line = 0;
@@ -244,7 +269,7 @@
    * Comment
    */
   $(document).ready(function() {
-    $('#table-container').css('width', $(window).height());
+    $('#table-container').css('max-width', $(window).height());
     for (var r=0; r<6; r++) {
       $("#table-grid").prepend('<tr id="row-'+r+'" class="">');
       $row = $("#row-"+r);
@@ -267,7 +292,7 @@
     $('#loading').css('display','none');
   });
   $(window).resize(function() {
-    $('#table-container').css('width', $(window).height());
+    $('#table-container').css('max-width', $(window).height());
   });
   </script>
 </body>
