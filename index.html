@@ -111,7 +111,7 @@
         </div><!--/.well -->
       </div><!--/span-->
 
-      <div class="span9 well">
+      <div class="span9 well" id="table-container">
         <img id="loading" src="/img/ajax-loader.gif" />
 
         <table id="table-grid" width="100%">
@@ -191,6 +191,7 @@
    * Comment
    */
   $(document).ready(function() {
+    $('#table-container').css('width', $(window).height());
     for (var r=0; r<6; r++) {
       $("#table-grid").prepend('<tr id="row-'+r+'" class="">');
       $row = $("#row-"+r);
@@ -211,6 +212,9 @@
       }
     }
     $('#loading').css('display','none');
+  });
+  $(window).resize(function() {
+    $('#table-container').css('width', $(window).height());
   });
   </script>
 </body>
