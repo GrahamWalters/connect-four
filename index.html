@@ -187,8 +187,32 @@
           return true;
       }
     }
-  }
+    /* DIAGONAL */
+    for (var r=0; r<6; r++) {
+      for (var d=0; d<(6-r); d++) {
+        if (state[d][d+r][0] == turn)
+          line ++;
+        else
+          line = 0;
+        if (line == 4)
+          return true;
+      }
+      line = 0;
+    }
 
+    for (var c=0; c<6; c++) {
+      for (var d=0; d<(6-c); d++) {
+        if (state[d+c+1][d][0] == turn)
+          line ++;
+        else
+          line = 0;
+        if (line == 4)
+          return true;
+      }
+      line = 0;
+    }
+    return false;
+  }
 
   /* 
    * Drop the coin function.
