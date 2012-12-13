@@ -206,8 +206,10 @@ function drop(r, c) {
     else
       turn = 'P1'
 
-    if (autoRotate)
-        $('#play-screen').toggleClass('rotate');
+    if (autoRotate) {
+      $('#play-screen').toggleClass('rotate');
+      $('#sidebar').toggleClass('rotate');
+    }
   }
 }
 
