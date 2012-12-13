@@ -111,7 +111,7 @@
         </div><!--/.well -->
       </div><!--/span-->
 
-      <div class="span9 well" id="table-container">
+      <div class="span9 well" id="content">
         <img id="loading" src="/img/ajax-loader.gif" />
 
         <table id="table-grid" width="100%">
@@ -168,6 +168,7 @@
 
   function line() {
     var line = 0;
+    numbers = {};
     /* ROWS */
     for (var r=0; r<6; r++) {
       for (var c=0; c<7; c++) {
@@ -287,10 +288,17 @@
   }
 
   /* 
-   * Comment
+   * New Game
    */
-  $(document).ready(function() {
-    $('#table-container').css('max-width', $(window).height());
+  function newGame() {
+    state = new Array(7);
+    for (var c=0; c<7; c++) {
+      state[c] = new Array(6);
+      for (var r=0; r<6; r++)
+        state[c][r] = new Array(2);
+    }
+    
+    $("#table-grid").html('');
     for (var r=0; r<6; r++) {
       $("#table-grid").prepend('<tr id="row-'+r+'" class="">');
       $row = $("#row-"+r);
@@ -310,10 +318,18 @@
         state[c][r][1] = number;
       }
     }
+  }
+
+  /* 
+   * Comment
+   */
+  $(document).ready(function() {
+    $('#content').css('max-width', $(window).height());
+    newGame();
     $('#loading').css('display','none');
   });
   $(window).resize(function() {
-    $('#table-container').css('max-width', $(window).height());
+    $('#content').css('max-width', $(window).height());
   });
   </script>
 </body>
