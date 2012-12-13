@@ -53,7 +53,7 @@
         </div><!--/.well -->
       </div><!--/span-->
 
-      <div class="span8 offset2 well" id="start-screen" class="screen">
+      <div class="span8 offset2 well" id="start-screen">
         <img class="span10 offset1" src="/img/banner.gif" />
 
         <div class="row-fluid">
@@ -129,14 +129,31 @@
         </div>
       </div>
 
-      <div class="span9 well" id="play-screen" class="screen">
+      <div class="span9 well" id="play-screen">
         <table id="table-grid" width="100%">
         </table>
       </div>
 
-      <div class="span9 well" class="screen" id="end-screen">
+      <div class="span8 offset2 well" id="end-screen">
+        <div class="row-fluid">
+          <div class="span4 offset2">
+            <h3 id="winner">Player 1 Wins!</h3>
+            <img id="winner-img" class="img-polaroid img-rounded" src="/img/coins/coin1.gif" />
+          </div>
+          <div class="span4">
+            <h3 id="loser">Player 2 Loses!</h3>
+            <img id="loser-img" class="img-polaroid img-rounded" src="/img/coins/coin2.gif" />
+          </div>
+        </div>
+        <div class="row-fluid">
+          <button class="btn" type="button" onclick=""><span class="icon-info-sign"></span> Help</button>
+          <button class="btn" type="button" onclick="toggleMusic(this);"><span class="icon-music"></span> Play Music</button>
+          <button class="btn" type="button" onclick="toggleAutoRotate(this);"><span class="icon-refresh"></span> Auto Rotate</button>
+        </div>
 
+        <button class="span6 offset3 btn btn-large btn-block btn-primary" type="button" onclick="newGame();">New Game</button>
       </div>
+
     </div><!--/row-->
 
 

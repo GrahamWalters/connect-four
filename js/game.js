@@ -198,17 +198,18 @@ function drop(r, c) {
     $('#r'+low+'c'+c).find('.grid-box-number').css('display', 'block');
     state[c][low][0] = turn;
 
-    if (line())
-      alert(turn + " Wins!!!");
+    if (line()) {
+      finishGame();
+    } else {
+      if (turn == 'P1')
+        turn = 'P2';
+      else
+        turn = 'P1'
 
-    if (turn == 'P1')
-      turn = 'P2';
-    else
-      turn = 'P1'
-
-    if (autoRotate) {
-      $('#play-screen').toggleClass('rotate');
-      $('#sidebar').toggleClass('rotate');
+      if (autoRotate) {
+        $('#play-screen').toggleClass('rotate');
+        $('#sidebar').toggleClass('rotate');
+      }
     }
   }
 }
@@ -252,13 +253,38 @@ function newGame() {
 }
 
 /* 
+ * Finish Game
+ */
+function finishGame() {
+    $('#start-screen').css('display','none');
+    $('#play-screen').css('display','none');
+    $('#sidebar').css('display','none');
+    $('#end-screen').css('display','block');
+
+  if (turn == 'P1') {
+    $('#winner').html('Player 1 Wins!');
+    $('#loser').html('Player 2 Loses!');
+    $('#winner-img').attr('src', '/img/coins/coin'+P1avatar+'.gif');
+    $('#loser-img').attr('src', '/img/coins/coin'+P2avatar+'.gif');
+  } else {
+    $('#winner').html('Player 2 Wins!');
+    $('#loser').html('Player 1 Loses!');
+    $('#winner-img').attr('src', '/img/coins/coin'+P2avatar+'.gif');
+    $('#loser-img').attr('src', '/img/coins/coin'+P1avatar+'.gif');
+  }
+}
+
+
+/* 
  * Comment
  */
 $(document).ready(function() {
   $('#play-screen').css('max-width', $(window).height());
-  $('#end-screen').css('max-width', $(window).height());
+  $('#start-screen').css('display','block');
+  $('#play-screen').css('display','none');
+  $('#sidebar').css('display','none');
+  $('#end-screen').css('display','none');
 });
 $(window).resize(function() {
   $('#play-screen').css('max-width', $(window).height());
-  $('#end-screen').css('max-width', $(window).height());
 });
