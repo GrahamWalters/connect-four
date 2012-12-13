@@ -77,8 +77,8 @@ function toggleAutoRotate(t) {
     window[name] = ((window[name]+step)%11<1 ? 11 : (window[name]+step)%11);
     $('#'+name).attr('src','/img/coins/coin'+window[name]+'.gif');
   } else {
-    window[name] = ((window[name]+step)%11<1 ? 11 : (window[name]+step)%11);
-    $('#'+name).attr('src','/img/coins/coin'+window[name]+'.gif');
+    window[name] = ((window[name]+step)%6<1 ? 6 : (window[name]+step)%6);
+    $('#'+name).attr('src','/img/avatars/avatar'+window[name]+'.png');
   }
  }
 
@@ -264,13 +264,13 @@ function finishGame() {
   if (turn == 'P1') {
     $('#winner').html('Player 1 Wins!');
     $('#loser').html('Player 2 Loses!');
-    $('#winner-img').attr('src', '/img/coins/coin'+P1avatar+'.gif');
-    $('#loser-img').attr('src', '/img/coins/coin'+P2avatar+'.gif');
+    $('#winner-img').attr('src', '/img/avatars/avatar'+P1avatar+'.png');
+    $('#loser-img').attr('src', '/img/avatars/avatar'+P2avatar+'.png');
   } else {
     $('#winner').html('Player 2 Wins!');
     $('#loser').html('Player 1 Loses!');
-    $('#winner-img').attr('src', '/img/coins/coin'+P2avatar+'.gif');
-    $('#loser-img').attr('src', '/img/coins/coin'+P1avatar+'.gif');
+    $('#winner-img').attr('src', '/img/avatars/avatar'+P2avatar+'.png');
+    $('#loser-img').attr('src', '/img/avatars/avatar'+P1avatar+'.png');
   }
 }
 
