@@ -5,6 +5,8 @@ var P2avatar = 2;
 var turn = 'P1';
 var numbers = {};
 var numberMax = 17;
+var autoRotate = false;
+var music = false;
 
 /* 
  * state - the board state.
@@ -26,9 +28,43 @@ function setNumberMax(n) {
   numberMax = n;
 }
 
+/* 
+ * Toggle the difficulty buttons.
+ * @param t - the object
+ */
 function toggle(t) {
   $('#difficulty').find('.btn').removeClass('active');
   $(t).addClass('active');
+}
+
+/* 
+ * Toggle the music
+ * @param t - the object
+ */
+function toggleMusic(t) {
+  if (music) {
+    music = false;
+    $(t).html('<span class="icon-music icon-white"></span> Play Music');
+  } else {
+    music = true;
+    $(t).html('<span class="icon-music"></span> Stop Music');
+  }
+  $(t).toggleClass('btn-inverse');
+  $(t).find('span').toggleClass('icon-white');
+}
+
+/* 
+ * Toggle the auto rotate feature
+ * @param t - the object
+ */
+function toggleAutoRotate(t) {
+  if (autoRotate) {
+    autoRotate = false;
+  } else {
+    autoRotate = true;
+  }
+  $(t).toggleClass('btn-inverse');
+  $(t).find('span').toggleClass('icon-white');
 }
 
 /* 
@@ -169,6 +205,9 @@ function drop(r, c) {
       turn = 'P2';
     else
       turn = 'P1'
+
+    if (autoRotate)
+        $('#play-screen').toggleClass('rotate');
   }
 }
 
