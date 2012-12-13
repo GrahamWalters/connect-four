@@ -9,52 +9,9 @@
 
   <!-- Le styles -->
   <link href="/css/bootstrap.css" rel="stylesheet">
-  <style type="text/css">
-  body {
-    padding-top: 60px;
-    padding-bottom: 40px;
-  }
-  .sidebar-nav {
-    padding: 9px 0;
-  }
-  #table-grid {
-    position: relative;
-  }
-  .grid-box {
-    position: relative;
-  }
-  .grid-box-hack {
-    width: 100%;
-    height: 100%;
-  }
-  .grid-box-img {
-    width: 100%;
-  }
-  .grid-box-coin {
-    position: absolute;
-    top:  10%;
-    left: 10%;
-    max-width: 82%;
-  }
-  .grid-box-number {
-    display: none;
-    position: absolute;
-    top:  40%;
-    width: 100%;
-    text-align: center;
-    font-size: 18px;
-  }
-  .arrow {
-    font-size: 1000%;
-    margin-top: 8%;
-    text-align: center;
-  }
-  .arrow a {
-    text-decoration: none;
-  }
-
-  </style>
   <link href="/css/bootstrap-responsive.css" rel="stylesheet">
+  <link href="/css/style.css" rel="stylesheet">
+
 
   <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
   <!--[if lt IE 9]>
@@ -70,33 +27,9 @@
 </head>
 
 <body>
-
-  <div class="navbar navbar-inverse navbar-fixed-top">
-    <div class="navbar-inner">
-      <div class="container-fluid">
-        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </a>
-        <a class="brand" href="#">Connect Four</a>
-        <div class="nav-collapse collapse">
-          <p class="navbar-text pull-right">
-            Logged in as <a href="#" class="navbar-link">Username</a>
-          </p>
-          <ul class="nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </div>
-  </div>
-
   <div class="container">
     <div class="row-fluid">
-      <div class="span3">
+      <div class="span3" id="sidebar">
         <div class="well sidebar-nav">
           <ul class="nav nav-list">
             <li class="nav-header">Sidebar</li>
@@ -120,12 +53,7 @@
         </div><!--/.well -->
       </div><!--/span-->
 
-      <div class="span9 well" id="content">
-        <img id="loading" src="/img/ajax-loader.gif" />
-
-        <table id="table-grid" width="100%">
-
-        </table>
+      <div class="span8 offset2 well" id="start-screen" class="screen">
         <img class="span10 offset1" src="/img/banner.gif" />
         <div class="row-fluid">
           <h3 class="span8 offset2" style="text-align:center">Select your avatars</h3>
@@ -169,9 +97,18 @@
         <div class="row-fluid">
           <button class="span6 offset3 btn btn-large btn-block btn-primary" type="button" onclick="newGame();">Start Game</button>
         </div>
+      </div>
 
-      </div><!--/span-->
+      <div class="span9 well" id="play-screen" class="screen">
+        <table id="table-grid" width="100%">
+        </table>
+      </div>
+
+      <div class="span9 well" class="screen" id="end-screen">
+
+      </div>
     </div><!--/row-->
+
 
     <hr>
 
@@ -197,212 +134,6 @@
   <script src="/js/bootstrap-collapse.js"></script>
   <script src="/js/bootstrap-carousel.js"></script>
   <script src="/js/bootstrap-typeahead.js"></script>
-
-  <script type="text/javascript">
-  var P1coin = 2;
-  var P2coin = 4;
-  var P1avatar = 1;
-  var P2avatar = 2;
-  var turn = 'P1';
-  var numbers = {};
-
-  /* 
-   * state - the board state.
-   * [column][row][0] = player
-   * [column][row][0] = number
-   */
-  var state = new Array(7);
-  for (var c=0; c<7; c++) {
-    state[c] = new Array(6);
-    for (var r=0; r<6; r++)
-      state[c][r] = new Array(2);
-  }
-
-  /* 
-   * Changes the images in the selectors, on the start screen.
-   * @param name - the object to be changed
-   * @param step - 1 or -1 for right or left.
-   */
-   function changeImage(name, step) {
-    if (name.substr(2) == 'coin') {
-      window[name] = ((window[name]+step)%11<1 ? 11 : (window[name]+step)%11);
-      $('#'+name).attr('src','/img/coins/coin'+window[name]+'.gif');
-    } else {
-      window[name] = ((window[name]+step)%11<1 ? 11 : (window[name]+step)%11);
-      $('#'+name).attr('src','/img/coins/coin'+window[name]+'.gif');
-    }
-   }
-
-
-  /* 
-   * Checks for 4 coins in a row.
-   * Sets numbers equal to the four numbers in a row.
-   */
-  function line() {
-    var line = 0;
-    numbers = {};
-    /* ROWS */
-    for (var r=0; r<6; r++) {
-      for (var c=0; c<7; c++) {
-        if (state[c][r][0] == turn) {
-          numbers[line] = state[c][r][1];
-          line ++;
-        } else {
-          numbers = {};
-          line = 0;
-        }
-        if (line == 4)
-          return true;
-      }
-    }
-    /* COLUMN */
-    for (var c=0; c<7; c++) {
-      for (var r=0; r<6; r++) {
-        if (state[c][r][0] == turn) {
-          numbers[line] = state[c][r][1];
-          line ++;
-        } else {
-          numbers = {};
-          line = 0;
-        }
-        if (line == 4)
-          return true;
-      }
-    }
-    /* DIAGONAL */
-    /* Bottom left to top right */
-    for (var r=0; r<=2; r++) {
-      for (var d=0; d<(6-r); d++) {
-        if (state[d][d+r][0] == turn) {
-          numbers[line] = state[d][d+r][1];
-          line ++;
-        } else {
-          numbers = {};
-          line = 0;
-        }
-        if (line == 4)
-          return true;
-      }
-      line = 0;
-    }
-
-    for (var c=1; c<=3; c++) {
-      for (var d=0; d<(7-c); d++) {
-        if (state[d+c][d][0] == turn) {
-          numbers[line] = state[d+c][d][1];
-          line ++;
-        } else {
-          numbers = {};
-          line = 0;
-        }
-        if (line == 4)
-          return true;
-      }
-      line = 0;
-    }
-    /* Top left to bottom right */
-    for (var r=0; r<=2; r++) {
-      for (var d=0; d<(6-r); d++) {
-        if (state[d][5-r-d][0] == turn) {
-          numbers[line] = state[d][5-r-d][1];
-          line ++;
-        } else {
-          numbers = {};
-          line = 0;
-        }
-        if (line == 4)
-          return true;
-      }
-      line = 0;
-    }
-
-    for (var c=1; c<=3; c++) {
-      for (var d=0; d<(7-c); d++) {
-        if (state[d+c][5-d][0] == turn) {
-          numbers[line] = state[d+c][5-d][1];
-          line ++;
-        } else {
-          numbers = {};
-          line = 0;
-        }
-        if (line == 4)
-          return true;
-      }
-      line = 0;
-    }
-    return false;
-  }
-
-  /* 
-   * Drop the coin function.
-   * @param r - the row
-   * @param c - the column
-   */
-  function drop(r, c) {
-    var low = 0;
-    for (var i=0; i<state[c].length; i++)
-      if (state[c][i][0] != null)
-        low = i+1;
-
-    if(low < 6) {
-      $('#r'+low+'c'+c).find('.coin').html('<img class="grid-box-coin" src="/img/coins/coin'+window[turn+'coin']+'.gif" />');
-      $('#r'+low+'c'+c).find('.grid-box-number').css('display', 'block');
-      state[c][low][0] = turn;
-
-      if (line())
-        alert(turn + " Wins!!!");
-
-      if (turn == 'P1')
-        turn = 'P2';
-      else
-        turn = 'P1'
-    }
-  }
-
-  /* 
-   * New Game
-   */
-  function newGame() {
-    state = new Array(7);
-    for (var c=0; c<7; c++) {
-      state[c] = new Array(6);
-      for (var r=0; r<6; r++)
-        state[c][r] = new Array(2);
-    }
-    
-    $("#table-grid").html('');
-    for (var r=0; r<6; r++) {
-      $("#table-grid").prepend('<tr id="row-'+r+'" class="">');
-      $row = $("#row-"+r);
-
-      for (var c=0; c<7; c++) {
-        var number = Math.floor((Math.random()*25)+1);
-        $row.append(
-          '<td class="box" id="r'+r+'c'+c+'">'+
-            '<div class="grid-box" onclick="drop('+r+','+c+');">'+
-              '<div class="grid-box-hack">'+
-                '<img class="grid-box-img" src="/img/grid.png" />'+
-              '</div>'+
-              '<div class="coin"></div>'+
-              '<div class="grid-box-number">'+number+'</div>'+
-            '</div>'+
-          '</td>');
-        state[c][r][1] = number;
-      }
-    }
-  }
-
-  /* 
-   * Comment
-   */
-  $(document).ready(function() {
-    $('#content').css('max-width', $(window).height());
-    // newGame();
-    $('#loading').css('display','none');
-  });
-  $(window).resize(function() {
-    $('#content').css('max-width', $(window).height());
-  });
-  </script>
+  <script src="/js/game.js"></script>
 </body>
 </html>
