@@ -131,30 +131,30 @@
           <h3 class="span8 offset2" style="text-align:center">Select your avatars</h3>
         </div>
         <div class="row-fluid">
-          <div id="avatar-1" class="avatar-selector well span6">
-            <p class="span4 arrow"><a href="#left">«</a></p>
-            <img class="span4 img-polaroid img-rounded" src="/img/coins/coin1.gif" />
-            <p class="span4 arrow"><a href="#right">»</a></p>
+          <div class="avatar-selector well span6">
+            <p class="span4 arrow"><a href="#left" onclick="changeImage('P1avatar', -1);">«</a></p>
+            <img class="span4 img-polaroid img-rounded" id="P1avatar" src="/img/coins/coin1.gif" />
+            <p class="span4 arrow"><a href="#right" onclick="changeImage('P1avatar', 1);">»</a></p>
           </div>
-          <div id="avatar-2" class="avatar-selector well span6">
-            <p class="span4 arrow"><a href="#left">«</a></p>
-            <img class="span4 img-polaroid img-rounded" src="/img/coins/coin2.gif" />
-            <p class="span4 arrow"><a href="#right">»</a></p>
+          <div class="avatar-selector well span6">
+            <p class="span4 arrow"><a href="#left" onclick="changeImage('P2avatar', -1);">«</a></p>
+            <img class="span4 img-polaroid img-rounded" id="P2avatar" src="/img/coins/coin2.gif" />
+            <p class="span4 arrow"><a href="#right" onclick="changeImage('P2avatar', 1);">»</a></p>
           </div>
         </div>
         <div class="row-fluid">
           <h3 class="span8 offset2" style="text-align:center">Select your coins</h3>
         </div>
         <div class="row-fluid">
-          <div id="coin-1" class="coin-selector well span6">
-            <p class="span4 arrow"><a href="#left">«</a></p>
-            <img class="span4 img-polaroid img-rounded" src="/img/coins/coin1.gif" />
-            <p class="span4 arrow"><a href="#right">»</a></p>
+          <div class="coin-selector well span6">
+            <p class="span4 arrow"><a href="#left" onclick="changeImage('P1coin', -1);">«</a></p>
+            <img class="span4 img-polaroid img-rounded" id="P1coin" src="/img/coins/coin1.gif" />
+            <p class="span4 arrow"><a href="#right" onclick="changeImage('P1coin', 1);">»</a></p>
           </div>
-          <div id="coin-2" class="coin-selector well span6">
-            <p class="span4 arrow"><a href="#left">«</a></p>
-            <img class="span4 img-polaroid img-rounded" src="/img/coins/coin2.gif" />
-            <p class="span4 arrow"><a href="#right">»</a></p>
+          <div class="coin-selector well span6">
+            <p class="span4 arrow"><a href="#left" onclick="changeImage('P2coin', -1);">«</a></p>
+            <img class="span4 img-polaroid img-rounded" id="P2coin" src="/img/coins/coin2.gif" />
+            <p class="span4 arrow"><a href="#right" onclick="changeImage('P2coin', 1);">»</a></p>
           </div>
         </div>
 
@@ -218,6 +218,26 @@
       state[c][r] = new Array(2);
   }
 
+  /* 
+   * Changes the images in the selectors, on the start screen.
+   * @param name - the object to be changed
+   * @param step - 1 or -1 for right or left.
+   */
+   function changeImage(name, step) {
+    if (name.substr(2) == 'coin') {
+      window[name] = ((window[name]+step)%11<1 ? 11 : (window[name]+step)%11);
+      $('#'+name).attr('src','/img/coins/coin'+window[name]+'.gif');
+    } else {
+      window[name] = ((window[name]+step)%11<1 ? 11 : (window[name]+step)%11);
+      $('#'+name).attr('src','/img/coins/coin'+window[name]+'.gif');
+    }
+   }
+
+
+  /* 
+   * Checks for 4 coins in a row.
+   * Sets numbers equal to the four numbers in a row.
+   */
   function line() {
     var line = 0;
     numbers = {};
