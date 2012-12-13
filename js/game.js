@@ -4,6 +4,7 @@ var P1avatar = 1;
 var P2avatar = 2;
 var turn = 'P1';
 var numbers = {};
+var numberMax = 17;
 
 /* 
  * state - the board state.
@@ -15,6 +16,19 @@ for (var c=0; c<7; c++) {
   state[c] = new Array(6);
   for (var r=0; r<6; r++)
     state[c][r] = new Array(2);
+}
+
+/* 
+ * Set numberMax
+ * @param n - new numberMax
+ */
+function setNumberMax(n) {
+  numberMax = n;
+}
+
+function toggle(t) {
+  $('#difficulty').find('.btn').removeClass('active');
+  $(t).addClass('active');
 }
 
 /* 
@@ -180,7 +194,7 @@ function newGame() {
     $row = $("#row-"+r);
 
     for (var c=0; c<7; c++) {
-      var number = Math.floor((Math.random()*25)+1);
+      var number = Math.floor((Math.random()*numberMax)+1);
       $row.append(
         '<td class="box" id="r'+r+'c'+c+'">'+
           '<div class="grid-box" onclick="drop('+r+','+c+');">'+
@@ -200,12 +214,10 @@ function newGame() {
  * Comment
  */
 $(document).ready(function() {
-  $('#start-screen').css('max-width', $(window).height());
   $('#play-screen').css('max-width', $(window).height());
   $('#end-screen').css('max-width', $(window).height());
 });
 $(window).resize(function() {
-  $('#start-screen').css('max-width', $(window).height());
   $('#play-screen').css('max-width', $(window).height());
   $('#end-screen').css('max-width', $(window).height());
 });
