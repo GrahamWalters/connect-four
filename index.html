@@ -55,36 +55,60 @@
 
       <div class="span8 offset2 well" id="start-screen" class="screen">
         <img class="span10 offset1" src="/img/banner.gif" />
+
         <div class="row-fluid">
-          <h3 class="span8 offset2" style="text-align:center">Select your avatars</h3>
-        </div>
-        <div class="row-fluid">
-          <div class="avatar-selector well span6">
-            <p class="span4 arrow"><a href="#left" onclick="changeImage('P1avatar', -1);">«</a></p>
-            <img class="span4 img-polaroid img-rounded" id="P1avatar" src="/img/coins/coin1.gif" />
-            <p class="span4 arrow"><a href="#right" onclick="changeImage('P1avatar', 1);">»</a></p>
-          </div>
-          <div class="avatar-selector well span6">
-            <p class="span4 arrow"><a href="#left" onclick="changeImage('P2avatar', -1);">«</a></p>
-            <img class="span4 img-polaroid img-rounded" id="P2avatar" src="/img/coins/coin2.gif" />
-            <p class="span4 arrow"><a href="#right" onclick="changeImage('P2avatar', 1);">»</a></p>
-          </div>
-        </div>
-        <div class="row-fluid">
-          <h3 class="span8 offset2" style="text-align:center">Select your coins</h3>
-        </div>
-        <div class="row-fluid">
-          <div class="coin-selector well span6">
-            <p class="span4 arrow"><a href="#left" onclick="changeImage('P1coin', -1);">«</a></p>
-            <img class="span4 img-polaroid img-rounded" id="P1coin" src="/img/coins/coin1.gif" />
-            <p class="span4 arrow"><a href="#right" onclick="changeImage('P1coin', 1);">»</a></p>
-          </div>
-          <div class="coin-selector well span6">
-            <p class="span4 arrow"><a href="#left" onclick="changeImage('P2coin', -1);">«</a></p>
-            <img class="span4 img-polaroid img-rounded" id="P2coin" src="/img/coins/coin2.gif" />
-            <p class="span4 arrow"><a href="#right" onclick="changeImage('P2coin', 1);">»</a></p>
-          </div>
-        </div>
+          <div class="well span6">
+            <div class="row-fluid">
+              <h3 class="span12" style="text-align:center">Player 1</h3>
+            </div>
+            <div class="row-fluid">
+              <h4 class="span12" style="text-align:center">Select your avatar</h4>
+            </div>
+            <div class="row-fluid">
+              <div class="avatar-selector span12">
+                <p class="span4 arrow"><a href="#left" onclick="changeImage('P1avatar', -1);">«</a></p>
+                <img class="span4 img-polaroid img-rounded" id="P1avatar" src="/img/coins/coin1.gif" />
+                <p class="span4 arrow"><a href="#right" onclick="changeImage('P1avatar', 1);">»</a></p>
+              </div>
+            </div>
+            <div class="row-fluid">
+              <h4 class="span12" style="text-align:center">Select your coin</h4>
+            </div>
+            <div class="row-fluid">
+              <div class="coin-selector span12">
+                <p class="span4 arrow"><a href="#left" onclick="changeImage('P1coin', -1);">«</a></p>
+                <img class="span4 img-polaroid img-rounded" id="P1coin" src="/img/coins/coin1.gif" />
+                <p class="span4 arrow"><a href="#right" onclick="changeImage('P1coin', 1);">»</a></p>
+              </div>
+            </div>
+          </div><!--/span-->
+
+          <div class="well span6">
+            <div class="row-fluid">
+              <h3 class="span12" style="text-align:center">Player 2</h3>
+            </div>
+            <div class="row-fluid">
+              <h4 class="span12" style="text-align:center">Select your avatar</h4>
+            </div>
+            <div class="row-fluid">
+              <div class="avatar-selector span12">
+                <p class="span4 arrow"><a href="#left" onclick="changeImage('P2avatar', -1);">«</a></p>
+                <img class="span4 img-polaroid img-rounded" id="P2avatar" src="/img/coins/coin2.gif" />
+                <p class="span4 arrow"><a href="#right" onclick="changeImage('P2avatar', 1);">»</a></p>
+              </div>
+            </div>
+            <div class="row-fluid">
+              <h4 class="span12" style="text-align:center">Select your coin</h4>
+            </div>
+            <div class="row-fluid">
+              <div class="coin-selector span12">
+                <p class="span4 arrow"><a href="#left" onclick="changeImage('P2coin', -1);">«</a></p>
+                <img class="span4 img-polaroid img-rounded" id="P2coin" src="/img/coins/coin2.gif" />
+                <p class="span4 arrow"><a href="#right" onclick="changeImage('P2coin', 1);">»</a></p>
+              </div>
+            </div>
+          </div><!--/span-->
+        </div><!--/row-->
 
         <div class="row-fluid">
           <div class="span6 offset3" id="difficulty">
