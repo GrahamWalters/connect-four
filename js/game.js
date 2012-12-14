@@ -333,12 +333,17 @@ function finishGame() {
     $('#loser').html('Player 2 Loses!');
     $('#winner-img').attr('src', '/img/avatars/avatar'+P1avatar+'.png');
     $('#loser-img').attr('src', '/img/avatars/avatar'+P2avatar+'.png');
+    $('#winner-stats').html('Player 1 has won <strong>'+P1wins+'</strong> times.');
+    $('#loser-stats').html('Player 2 has won <strong>'+P2wins+'</strong> times.');
+            
   } else {
     P2wins ++;
     $('#winner').html('Player 2 Wins!');
     $('#loser').html('Player 1 Loses!');
     $('#winner-img').attr('src', '/img/avatars/avatar'+P2avatar+'.png');
     $('#loser-img').attr('src', '/img/avatars/avatar'+P1avatar+'.png');
+    $('#winner-stats').html('Player 2 has won <strong>'+P2wins+'</strong> times.');
+    $('#loser-stats').html('Player 1 has won <strong>'+P1wins+'</strong> times.');
   }
 }
 
