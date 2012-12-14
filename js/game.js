@@ -72,7 +72,7 @@ function toggleAutoRotate(t) {
  * @param name - the object to be changed
  * @param step - 1 or -1 for right or left.
  */
- function changeImage(name, step) {
+function changeImage(name, step) {
   if (name.substr(2) == 'coin') {
     window[name] = ((window[name]+step)%11<1 ? 11 : (window[name]+step)%11);
     $('#'+name).attr('src','/img/coins/coin'+window[name]+'.gif');
@@ -80,7 +80,7 @@ function toggleAutoRotate(t) {
     window[name] = ((window[name]+step)%6<1 ? 6 : (window[name]+step)%6);
     $('#'+name).attr('src','/img/avatars/avatar'+window[name]+'.png');
   }
- }
+}
 
 
 /* 
@@ -201,10 +201,15 @@ function drop(r, c) {
     if (line()) {
       finishGame();
     } else {
-      if (turn == 'P1')
+      if (turn == 'P1') {
         turn = 'P2';
-      else
-        turn = 'P1'
+        $('#currentAvatar').attr('src', '/img/avatars/avatar'+P2avatar+'.png');
+        $('#currentMove').html('Player 2\'s Move');
+      } else {
+        turn = 'P1';
+        $('#currentAvatar').attr('src', '/img/avatars/avatar'+P1avatar+'.png');
+        $('#currentMove').html('Player 1\'s Move');
+      }
 
       if (autoRotate) {
         $('#play-screen').toggleClass('rotate');
@@ -218,6 +223,14 @@ function drop(r, c) {
  * New Game
  */
 function newGame() {
+  if (turn == 'P1') {
+    $('#currentAvatar').attr('src', '/img/avatars/avatar'+P1avatar+'.png');
+    $('#currentMove').html('Player 1\'s Move');
+  } else {
+    $('#currentAvatar').attr('src', '/img/avatars/avatar'+P2avatar+'.png');
+    $('#currentMove').html('Player 2\'s Move');
+  }
+
   $('#start-screen').css('display','none');
   $('#play-screen').css('display','block');
   $('#sidebar').css('display','block');
@@ -256,10 +269,10 @@ function newGame() {
  * Finish Game
  */
 function finishGame() {
-    $('#start-screen').css('display','none');
-    $('#play-screen').css('display','none');
-    $('#sidebar').css('display','none');
-    $('#end-screen').css('display','block');
+  $('#start-screen').css('display','none');
+  $('#play-screen').css('display','none');
+  $('#sidebar').css('display','none');
+  $('#end-screen').css('display','block');
 
   if (turn == 'P1') {
     $('#winner').html('Player 1 Wins!');

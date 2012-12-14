@@ -29,28 +29,26 @@
 <body>
   <div class="container">
     <div class="row-fluid">
-      <div class="span3" id="sidebar">
-        <div class="well sidebar-nav">
-          <ul class="nav nav-list">
-            <li class="nav-header">Sidebar</li>
-            <li class="active"><a href="#">Link</a></li>
-            <li><a href="#">Link</a></li>
-            <li><a href="#">Link</a></li>
-            <li><a href="#">Link</a></li>
-            <li class="nav-header">Sidebar</li>
-            <li><a href="#">Link</a></li>
-            <li><a href="#">Link</a></li>
-            <li><a href="#">Link</a></li>
-            <li><a href="#">Link</a></li>
-            <li><a href="#">Link</a></li>
-            <li><a href="#">Link</a></li>
-            <li class="nav-header">Sidebar</li>
-            <li><a href="#">Link</a></li>
-            <li><a href="#">Link</a></li>
-            <li><a href="#">Link</a></li>
-          </ul>
-          <span id="timer"></span>
-        </div><!--/.well -->
+      <div class="well span3" id="sidebar">
+        <div class="row-fluid">
+          <h4 class="span8 offset2" id="currentMove">Player 1's Move</h4>
+        </div>
+        <div class="row-fluid">
+          <img class="span8 offset2 img-polaroid img-rounded" id="currentAvatar" src="#" />
+        </div>
+        <div class="row-fluid" style="margin-top:10px; text-align:center;">
+          <p id="timer">Move before: 60 seconds</p>
+        </div>
+
+        <div class="row-fluid">
+          <button class="btn" type="button" onclick=""><span class="icon-info-sign"></span> Help</button>
+        </div>
+        <div class="row-fluid">
+          <button class="btn" type="button" onclick="toggleMusic(this);"><span class="icon-music"></span> Play Music</button>
+        </div>
+        <div class="row-fluid">
+          <button class="btn" type="button" onclick="toggleAutoRotate(this);"><span class="icon-refresh"></span> Auto Rotate</button>
+        </div>
       </div><!--/span-->
 
       <div class="span8 offset2 well" id="start-screen">
