@@ -352,6 +352,18 @@ function finishGame() {
   }
 }
 
+/* 
+ * Display start screen
+ */
+function startScreen() {
+  P1wins = 0;
+  P2wins = 0;
+  $('#start-screen').css('display','block');
+  $('#play-screen').css('display','none');
+  $('#sidebar').css('display','none');
+  $('#end-screen').css('display','none');
+}
+
 
 /* 
  * Comment
