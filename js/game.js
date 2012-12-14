@@ -8,7 +8,7 @@ var turn = 'P1';
 var numbers = {};
 var numberMax = 10;
 var autoRotate = false;
-var music = false;
+var music = true;
 var count = 20;
 var counter;
 
@@ -46,11 +46,13 @@ function toggle(t) {
  */
 function toggleMusic() {
   if (music) {
-    music = false;
+    document.getElementById('background-sound').pause();
     $(document).find('.music-toggle').html('<span class="icon-music icon-white"></span> Play Music');
+    music = false;
   } else {
-    music = true;
+    document.getElementById('background-sound').play();
     $(document).find('.music-toggle').html('<span class="icon-music"></span> Stop Music');
+    music = true;
   }
   $(document).find('.music-toggle').toggleClass('btn-inverse');
   $(document).find('.music-toggle').find('span').toggleClass('icon-white');
@@ -209,6 +211,9 @@ function drop(r, c) {
       low = i+1;
 
   if(low < 6) {
+    if (music == true)
+      document.getElementById('game-sound').play();
+
     $('#r'+low+'c'+c).find('.coin').html('<img class="grid-box-coin" src="/img/coins/coin'+window[turn+'coin']+'.gif" />');
     $('#r'+low+'c'+c).find('.grid-box-number').css('display', 'block');
     state[c][low][0] = turn;
