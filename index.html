@@ -157,6 +157,23 @@
 
     </div><!--/row-->
 
+    <!-- Question Modal -->
+    <div id="question" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="questionModalLabel" aria-hidden="true">
+      <div class="modal-header">
+        <h3 id="questionModalLabel">Question</h3>
+      </div>
+      <div id="question-body" class="modal-body">
+        <p>Sum the following numbers...</p>
+        <div class="input-prepend">
+          <span class="add-on" id="questionNumbers">1 + 2 + 3 + 4 =</span>
+          <input class="span1" id="answer" type="text">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" aria-hidden="true" onclick="checkAnswer();">Enter</button>
+      </div>
+    </div>
+
     <!-- Help Modal -->
     <div id="Help" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="helpModalLabel" aria-hidden="true">
       <div class="modal-header">

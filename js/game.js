@@ -214,7 +214,13 @@ function drop(r, c) {
     state[c][low][0] = turn;
 
     if (line()) {
-      finishGame();
+      clearInterval(counter);
+      $('#question').modal({
+        keyboard: false,
+        backdrop: 'static'
+      });
+      $('#question').modal('show');
+      // finishGame();
     } else {
       if (turn == 'P1') {
         turn = 'P2';
