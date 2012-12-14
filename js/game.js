@@ -277,6 +277,8 @@ function newGame() {
       state[c][r][1] = number;
     }
   }
+  count = 20;
+  clearInterval(counter);
   counter = setInterval(timer, 1000);
 }
 
