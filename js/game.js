@@ -309,7 +309,7 @@ function newGame() {
 function checkAnswer() {
   if ($('#answer').val() == numbers[0]+numbers[1]+numbers[2]+numbers[3]) {
     $('#question').modal('hide');
-    finishGame();
+    window.setTimeout(finishGame, 1500);
   } else {
     if (turn == 'P1') {
       $('#questionModalLabel').html('Player 2, answer the following question:');
