@@ -79,7 +79,7 @@ function changeImage(name, step) {
     window[name] = ((window[name]+step)%11<1 ? 11 : (window[name]+step)%11);
     $('#'+name).attr('src','/img/coins/coin'+window[name]+'.gif');
   } else {
-    window[name] = ((window[name]+step)%6<1 ? 6 : (window[name]+step)%6);
+    window[name] = ((window[name]+step)%12<1 ? 12 : (window[name]+step)%12);
     $('#'+name).attr('src','/img/avatars/avatar'+window[name]+'.png');
   }
 }
