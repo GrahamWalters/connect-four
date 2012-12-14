@@ -56,6 +56,10 @@ body {
   text-decoration: none;
 }
 
+#same-icon-error {
+  display: none;
+}
+
 .rotate {
   -webkit-transform: rotate(180deg);
      -moz-transform: rotate(180deg);

@@ -11,6 +11,7 @@ var autoRotate = false;
 var music = true;
 var count = 20;
 var counter;
+var sameIcon = false;
 
 /* 
  * state - the board state.
@@ -83,6 +84,15 @@ function changeImage(name, step) {
   } else {
     window[name] = ((window[name]+step)%12<1 ? 12 : (window[name]+step)%12);
     $('#'+name).attr('src','/img/avatars/avatar'+window[name]+'.png');
+  }
+  if (P1coin == P2coin || P1avatar == P2avatar) {
+    $('.start-btn').addClass('disabled');
+    $('#same-icon-error').css('display', 'block');
+    sameIcon = true;
+  } else {
+    $('.start-btn').removeClass('disabled');
+    $('#same-icon-error').css('display', 'none');
+    sameIcon = false;
   }
 }
 
@@ -258,6 +268,9 @@ function drop(r, c) {
  * New Game
  */
 function newGame() {
+  if (sameIcon == true)
+    return false;
+
   if (turn == 'P1') {
     $('#currentAvatar').attr('src', '/img/avatars/avatar'+P1avatar+'.png');
     $('#currentMove').html('Player 1\'s Move');
