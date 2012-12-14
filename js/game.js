@@ -221,9 +221,6 @@ function drop(r, c) {
       low = i+1;
 
   if(low < 6) {
-    if (music == true)
-      document.getElementById('game-sound').play();
-
     $('#r'+low+'c'+c).find('.coin').html('<img class="grid-box-coin" src="/img/coins/coin'+window[turn+'coin']+'.png" />');
     $('#r'+low+'c'+c).find('.grid-box-number').css('display', 'block');
     state[c][low][0] = turn;
@@ -246,10 +243,14 @@ function drop(r, c) {
       $('#question').modal('show');
     } else {
       if (turn == 'P1') {
+        if (music == true)
+          document.getElementById('game-sound1').play();
         turn = 'P2';
         $('#currentAvatar').attr('src', '/img/avatars/avatar'+P2avatar+'.png');
         $('#currentMove').html('Player 2\'s Move');
       } else {
+        if (music == true)
+          document.getElementById('game-sound2').play();
         turn = 'P1';
         $('#currentAvatar').attr('src', '/img/avatars/avatar'+P1avatar+'.png');
         $('#currentMove').html('Player 1\'s Move');
