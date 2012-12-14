@@ -2,6 +2,8 @@ var P1coin = 1;
 var P2coin = 2;
 var P1avatar = 1;
 var P2avatar = 2;
+var P1wins = 0;
+var P2wins = 0;
 var turn = 'P1';
 var numbers = {};
 var numberMax = 17;
@@ -292,11 +294,13 @@ function finishGame() {
   $('#end-screen').css('display','block');
 
   if (turn == 'P1') {
+    P1wins ++;
     $('#winner').html('Player 1 Wins!');
     $('#loser').html('Player 2 Loses!');
     $('#winner-img').attr('src', '/img/avatars/avatar'+P1avatar+'.png');
     $('#loser-img').attr('src', '/img/avatars/avatar'+P2avatar+'.png');
   } else {
+    P2wins ++;
     $('#winner').html('Player 2 Wins!');
     $('#loser').html('Player 1 Loses!');
     $('#winner-img').attr('src', '/img/avatars/avatar'+P2avatar+'.png');
