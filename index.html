@@ -110,9 +110,9 @@
 
         <div class="row-fluid">
           <div class="span6 offset3" id="difficulty">
-            <button class="btn span4 btn-success" onclick="setNumberMax(10); toggle(this);">Easy</button>
-            <button class="btn span4 btn-warning active" onclick="setNumberMax(17); toggle(this);">Medium</button>
-            <button class="btn span4 btn-danger" onclick="setNumberMax(25); toggle(this);">Hard</button>
+            <button class="btn span4 btn-success" onclick="setNumberMax(5); toggle(this);">Easy</button>
+            <button class="btn span4 btn-warning active" onclick="setNumberMax(10); toggle(this);">Medium</button>
+            <button class="btn span4 btn-danger" onclick="setNumberMax(15); toggle(this);">Hard</button>
           </div>
         </div>
 
@@ -165,7 +165,7 @@
       <div id="question-body" class="modal-body">
         <p>Sum the following numbers...</p>
         <div class="input-prepend">
-          <span class="add-on" id="questionNumbers">1 + 2 + 3 + 4 =</span>
+          <span class="add-on" id="questionNumbers"></span>
           <input class="span1" id="answer" type="text">
         </div>
       </div>

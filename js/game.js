@@ -6,7 +6,7 @@ var P1wins = 0;
 var P2wins = 0;
 var turn = 'P1';
 var numbers = {};
-var numberMax = 17;
+var numberMax = 10;
 var autoRotate = false;
 var music = false;
 var count = 20;
@@ -213,14 +213,22 @@ function drop(r, c) {
     $('#r'+low+'c'+c).find('.grid-box-number').css('display', 'block');
     state[c][low][0] = turn;
 
+    /* IF 4 IN A LINE */
     if (line()) {
+      if (turn == 'P1') {
+        $('#questionModalLabel').html('Player 1, answer the following question:');
+      } else {
+        $('#questionModalLabel').html('Player 2, answer the following question:');
+      }
+      $('#questionNumbers').html(numbers[0]+' + '+numbers[1]+' + '+numbers[2]+' + '+numbers[3]+' =');
+
+
       clearInterval(counter);
       $('#question').modal({
         keyboard: false,
         backdrop: 'static'
       });
       $('#question').modal('show');
-      // finishGame();
     } else {
       if (turn == 'P1') {
         turn = 'P2';
@@ -291,9 +299,29 @@ function newGame() {
 }
 
 /* 
+ * Check if the 
+ */
+function checkAnswer() {
+  if ($('#answer').val() == numbers[0]+numbers[1]+numbers[2]+numbers[3]) {
+    $('#question').modal('hide');
+    finishGame();
+  } else {
+    if (turn == 'P1') {
+      $('#questionModalLabel').html('Player 2, answer the following question:');
+      turn = 'P2';
+    } else {
+      $('#questionModalLabel').html('Player 1, answer the following question:');
+      turn = 'P1';
+    }
+    $('#answer').val('');
+  }
+}
+
+/* 
  * Finish Game
  */
 function finishGame() {
+  $('#answer').val('');
   $('#start-screen').css('display','none');
   $('#play-screen').css('display','none');
   $('#sidebar').css('display','none');
