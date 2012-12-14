@@ -41,7 +41,7 @@
         </div>
 
         <div class="row-fluid">
-          <button class="btn" type="button" onclick=""><span class="icon-info-sign"></span> Help</button>
+          <a href="#Help" role="button" class="btn" data-toggle="modal"><span class="icon-info-sign"></span> Help</a>
         </div>
         <div class="row-fluid">
           <button class="btn music-toggle" type="button" onclick="toggleMusic();"><span class="icon-music"></span> Play Music</button>
@@ -121,7 +121,7 @@
         </div>
 
         <div class="row-fluid">
-          <button class="btn" type="button" onclick=""><span class="icon-info-sign"></span> Help</button>
+          <a href="#Help" role="button" class="btn" data-toggle="modal"><span class="icon-info-sign"></span> Help</a>
           <button class="btn music-toggle" type="button" onclick="toggleMusic();"><span class="icon-music"></span> Play Music</button>
           <button class="btn rotate-toggle" type="button" onclick="toggleAutoRotate();"><span class="icon-refresh"></span> Auto Rotate</button>
         </div>
@@ -149,7 +149,7 @@
         </div>
 
         <div class="row-fluid">
-          <button class="btn" type="button" onclick=""><span class="icon-info-sign"></span> Help</button>
+          <a href="#Help" role="button" class="btn" data-toggle="modal"><span class="icon-info-sign"></span> Help</a>
           <button class="btn music-toggle" type="button" onclick="toggleMusic();"><span class="icon-music"></span> Play Music</button>
           <button class="btn rotate-toggle" type="button" onclick="toggleAutoRotate();"><span class="icon-refresh"></span> Auto Rotate</button>
         </div>
@@ -157,6 +157,19 @@
 
     </div><!--/row-->
 
+    <!-- Help Modal -->
+    <div id="Help" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="helpModalLabel" aria-hidden="true">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="helpModalLabel">Help</h3>
+      </div>
+      <div class="modal-body">
+        <p>One fine body…</p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+      </div>
+    </div>
 
     <hr>
 
