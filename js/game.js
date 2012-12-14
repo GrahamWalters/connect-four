@@ -78,8 +78,8 @@ function toggleAutoRotate() {
  */
 function changeImage(name, step) {
   if (name.substr(2) == 'coin') {
-    window[name] = ((window[name]+step)%11<1 ? 11 : (window[name]+step)%11);
-    $('#'+name).attr('src','/img/coins/coin'+window[name]+'.gif');
+    window[name] = ((window[name]+step)%10<1 ? 10 : (window[name]+step)%10);
+    $('#'+name).attr('src','/img/coins/coin'+window[name]+'.png');
   } else {
     window[name] = ((window[name]+step)%12<1 ? 12 : (window[name]+step)%12);
     $('#'+name).attr('src','/img/avatars/avatar'+window[name]+'.png');
@@ -214,7 +214,7 @@ function drop(r, c) {
     if (music == true)
       document.getElementById('game-sound').play();
 
-    $('#r'+low+'c'+c).find('.coin').html('<img class="grid-box-coin" src="/img/coins/coin'+window[turn+'coin']+'.gif" />');
+    $('#r'+low+'c'+c).find('.coin').html('<img class="grid-box-coin" src="/img/coins/coin'+window[turn+'coin']+'.png" />');
     $('#r'+low+'c'+c).find('.grid-box-number').css('display', 'block');
     state[c][low][0] = turn;
 
