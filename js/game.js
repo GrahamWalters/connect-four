@@ -338,8 +338,8 @@ function finishGame() {
     $('#loser').html('Player 2 Loses!');
     $('#winner-img').attr('src', '/img/avatars/avatar'+P1avatar+'.png');
     $('#loser-img').attr('src', '/img/avatars/avatar'+P2avatar+'.png');
-    $('#winner-stats').html('Player 1 has won <strong>'+P1wins+'</strong> times.');
-    $('#loser-stats').html('Player 2 has won <strong>'+P2wins+'</strong> times.');
+    $('#winner-stats').html('Player 1 has won <strong>'+P1wins+'</strong> '+(P1wins>1 || P1wins<1 ? 'times.' : 'time.'));
+    $('#loser-stats').html('Player 2 has won <strong>'+P2wins+'</strong> '+(P2wins>1 || P2wins<1 ? 'times.' : 'time.'));
             
   } else {
     P2wins ++;
@@ -347,8 +347,8 @@ function finishGame() {
     $('#loser').html('Player 1 Loses!');
     $('#winner-img').attr('src', '/img/avatars/avatar'+P2avatar+'.png');
     $('#loser-img').attr('src', '/img/avatars/avatar'+P1avatar+'.png');
-    $('#winner-stats').html('Player 2 has won <strong>'+P2wins+'</strong> times.');
-    $('#loser-stats').html('Player 1 has won <strong>'+P1wins+'</strong> times.');
+    $('#winner-stats').html('Player 2 has won <strong>'+P2wins+'</strong> '+(P2wins>1 || P2wins<1 ? 'times.' : 'time.'));
+    $('#loser-stats').html('Player 1 has won <strong>'+P1wins+'</strong> '+(P1wins>1 || P1wins<1 ? 'times.' : 'time.'));
   }
 }
 
