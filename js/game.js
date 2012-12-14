@@ -41,32 +41,30 @@ function toggle(t) {
 
 /* 
  * Toggle the music
- * @param t - the object
  */
-function toggleMusic(t) {
+function toggleMusic() {
   if (music) {
     music = false;
-    $(t).html('<span class="icon-music icon-white"></span> Play Music');
+    $(document).find('.music-toggle').html('<span class="icon-music icon-white"></span> Play Music');
   } else {
     music = true;
-    $(t).html('<span class="icon-music"></span> Stop Music');
+    $(document).find('.music-toggle').html('<span class="icon-music"></span> Stop Music');
   }
-  $(t).toggleClass('btn-inverse');
-  $(t).find('span').toggleClass('icon-white');
+  $(document).find('.music-toggle').toggleClass('btn-inverse');
+  $(document).find('.music-toggle').find('span').toggleClass('icon-white');
 }
 
 /* 
  * Toggle the auto rotate feature
- * @param t - the object
  */
-function toggleAutoRotate(t) {
+function toggleAutoRotate() {
   if (autoRotate) {
     autoRotate = false;
   } else {
     autoRotate = true;
   }
-  $(t).toggleClass('btn-inverse');
-  $(t).find('span').toggleClass('icon-white');
+  $(document).find('.rotate-toggle').toggleClass('btn-inverse');
+  $(document).find('.rotate-toggle').find('span').toggleClass('icon-white');
 }
 
 /* 
