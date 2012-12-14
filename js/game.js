@@ -7,6 +7,8 @@ var numbers = {};
 var numberMax = 17;
 var autoRotate = false;
 var music = false;
+var count = 20;
+var counter;
 
 /* 
  * state - the board state.
@@ -80,6 +82,19 @@ function changeImage(name, step) {
     window[name] = ((window[name]+step)%6<1 ? 6 : (window[name]+step)%6);
     $('#'+name).attr('src','/img/avatars/avatar'+window[name]+'.png');
   }
+}
+
+/* 
+ * Move timer
+ */
+function timer() {
+    count--;
+    $('#timer').html('Move before: ' + (count%60) + ' seconds');
+    if (count <= 0) {
+        clearInterval(counter);
+        // out of time error
+        return false;
+    }
 }
 
 
@@ -215,6 +230,7 @@ function drop(r, c) {
         $('#play-screen').toggleClass('rotate');
         $('#sidebar').toggleClass('rotate');
       }
+      count = 20;
     }
   }
 }
@@ -263,6 +279,7 @@ function newGame() {
       state[c][r][1] = number;
     }
   }
+  counter = setInterval(timer, 1000);
 }
 
 /* 
