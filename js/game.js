@@ -244,7 +244,7 @@ function drop(r, c) {
       });
       $('#question').modal('show');
       window.setTimeout(function(){
-        $('#answer').focus();
+        $('#questionAnswer').focus();
       }, 1500);
     } else {
       if (turn == 'P1') {
@@ -326,7 +326,7 @@ function newGame() {
  * Check if the 
  */
 function checkAnswer() {
-  if ($('#answer').val() == numbers[0]+numbers[1]+numbers[2]+numbers[3]) {
+  if ($('#questionAnswer').val() == numbers[0]+numbers[1]+numbers[2]+numbers[3]) {
     $('#question').modal('hide');
     window.setTimeout(finishGame, 1500);
   } else {
@@ -339,8 +339,8 @@ function checkAnswer() {
       $('#questionPlayer').html('Player 1');
       turn = 'P1';
     }
-    $('#answer').val('');
-    $('#answer').focus();
+    $('#questionAnswer').val('');
+    $('#questionAnswer').focus();
   }
 }
 
@@ -348,7 +348,7 @@ function checkAnswer() {
  * Finish Game
  */
 function finishGame() {
-  $('#answer').val('');
+  $('#questionAnswer').val('');
   $('#start-screen').css('display','none');
   $('#play-screen').css('display','none');
   $('#sidebar').css('display','none');
@@ -396,6 +396,8 @@ $(document).ready(function() {
   $('#play-screen').css('display','none');
   $('#sidebar').css('display','none');
   $('#end-screen').css('display','none');
+  $('#popover-menu1').popover();
+  $('#popover-menu2').popover();
 });
 $(window).resize(function() {
   $('#play-screen').css('max-width', $(window).height());

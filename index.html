@@ -50,10 +50,10 @@
           <button class="btn btn-block rotate-toggle" type="button" onclick="toggleAutoRotate();"><span class="icon-refresh"></span> Auto Rotate</button>
         </div>
         <div class="row-fluid" style="margin-top:20px;">
-          <button class="btn btn-block btn-primary start-btn" type="button" onclick="newGame();">New Game</button>
+          <a href="#" class="btn btn-block btn-primary" onclick="newGame();">New Game</a>
         </div>
         <div class="row-fluid">
-          <button class="btn btn-block btn-primary start-btn" type="button" onclick="startScreen();">Main Menu</button>
+          <button id="popover-menu1" class="btn btn-block btn-primary" type="button" rel="popover" title="Warning!" data-content="This will reset your game stats. <a href='#' class='btn btn-block btn-primary' onclick='$(&quot;#popover-menu1&quot;).popover(&quot;hide&quot;); startScreen();'>Continue</a>" data-html="true">Main Menu</button>
         </div>
       </div><!--/span-->
 
@@ -130,7 +130,7 @@
         </div>
 
         <div class="row-fluid" style="margin-top:15px; margin-bottom:15px;">
-          <button class="span6 offset3 btn btn-large btn-block btn-primary start-btn" type="button" onclick="newGame();">Start Game</button>
+          <a href="#" class="span6 offset3 btn btn-large btn-block btn-primary start-btn" type="button" onclick="newGame();">Start Game</a>
         </div>
 
         <div class="row-fluid">
@@ -161,7 +161,7 @@
         
         <div class="row-fluid" style="margin-top:15px; margin-bottom:15px;">
           <div class="span3 offset3">
-            <button class="btn btn-large btn-block btn-primary" type="button" onclick="startScreen();">Main Menu</button>
+            <button id="popover-menu2" class="btn btn-large btn-block btn-primary" type="button" rel="popover" title="Warning!" data-content="This will reset your game stats. <a href='#' class='btn btn-block btn-primary' onclick='$(&quot;#popover-menu2&quot;).popover(&quot;hide&quot;); startScreen();'>Continue</a>" data-html="true">Main Menu</button>
           </div>
           <div class="span3">
             <button class="btn btn-large btn-block btn-primary" type="button" onclick="newGame();">Play Again</button>
