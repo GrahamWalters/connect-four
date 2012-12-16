@@ -101,7 +101,7 @@ function changeImage(name, step) {
  */
 function timer() {
     count--;
-    $('#timer').html('Move before: ' + (count%60) + ' seconds');
+    $('#timer').html('Move before: <strong>' + (count%60) + '</strong> seconds');
     if (count <= 0) {
         clearInterval(counter);
         // out of time error

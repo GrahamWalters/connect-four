@@ -37,17 +37,23 @@
           <img class="span8 offset2 img-polaroid img-rounded" id="currentAvatar" src="#" />
         </div>
         <div class="row-fluid" style="margin-top:10px; text-align:center;">
-          <p id="timer">Move before: 20 seconds</p>
+          <p id="timer">Move before: <strong>20</strong> seconds</p>
         </div>
 
-        <div class="row-fluid">
-          <a href="#Help" role="button" class="btn" data-toggle="modal"><span class="icon-info-sign"></span> Help</a>
+        <div class="row-fluid" style="margin-top:20px;">
+          <a href="#Help" role="button" class="btn btn-block" data-toggle="modal"><span class="icon-info-sign"></span> Help</a>
         </div>
         <div class="row-fluid">
-          <button class="btn btn-inverse music-toggle" type="button" onclick="toggleMusic();"><span class="icon-music icon-white"></span> Stop Music</button>
+          <button class="btn btn-block btn-inverse music-toggle" type="button" onclick="toggleMusic();"><span class="icon-music icon-white"></span> Stop Music</button>
         </div>
         <div class="row-fluid">
-          <button class="btn rotate-toggle" type="button" onclick="toggleAutoRotate();"><span class="icon-refresh"></span> Auto Rotate</button>
+          <button class="btn btn-block rotate-toggle" type="button" onclick="toggleAutoRotate();"><span class="icon-refresh"></span> Auto Rotate</button>
+        </div>
+        <div class="row-fluid" style="margin-top:20px;">
+          <button class="btn btn-block btn-primary start-btn" type="button" onclick="newGame();">New Game</button>
+        </div>
+        <div class="row-fluid">
+          <button class="btn btn-block btn-primary start-btn" type="button" onclick="startScreen();">Main Menu</button>
         </div>
       </div><!--/span-->
 

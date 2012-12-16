@@ -46,6 +46,9 @@ body {
 #sidebar {
   display: none;
 }
+#sidebar .row-fluid {
+  margin-bottom:5px;
+}
 
 .arrow {
   font-size: 1000%;
