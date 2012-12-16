@@ -12,6 +12,7 @@ var music = true;
 var count = 20;
 var counter;
 var sameIcon = false;
+var moves = 0;
 
 /* 
  * state - the board state.
@@ -130,6 +131,8 @@ function line() {
       if (line == 4)
         return true;
     }
+    numbers = {};
+    line = 0;
   }
   /* COLUMN */
   for (var c=0; c<7; c++) {
@@ -144,6 +147,8 @@ function line() {
       if (line == 4)
         return true;
     }
+    numbers = {};
+    line = 0;
   }
   /* DIAGONAL */
   /* Bottom left to top right */
@@ -159,6 +164,7 @@ function line() {
       if (line == 4)
         return true;
     }
+    numbers = {};
     line = 0;
   }
 
@@ -174,6 +180,7 @@ function line() {
       if (line == 4)
         return true;
     }
+    numbers = {};
     line = 0;
   }
   /* Top left to bottom right */
@@ -189,6 +196,7 @@ function line() {
       if (line == 4)
         return true;
     }
+    numbers = {};
     line = 0;
   }
 
@@ -204,6 +212,7 @@ function line() {
       if (line == 4)
         return true;
     }
+    numbers = {};
     line = 0;
   }
   return false;
@@ -224,6 +233,8 @@ function drop(r, c) {
     $('#r'+low+'c'+c).find('.coin').html('<img class="grid-box-coin" src="/img/coins/coin'+window[turn+'coin']+'.png" />');
     $('#r'+low+'c'+c).find('.grid-box-number').css('display', 'block');
     state[c][low][0] = turn;
+
+    moves ++;
 
     /* IF 4 IN A LINE */
     if (line()) {
@@ -268,6 +279,8 @@ function drop(r, c) {
       count = 20;
     }
   }
+  if (moves == 7*6)
+    alert('out of moves');
 }
 
 /* 
@@ -296,6 +309,8 @@ function newGame() {
     for (var r=0; r<6; r++)
       state[c][r] = new Array(2);
   }
+
+  moves = 0;
   
   $("#table-grid").html('');
   for (var r=0; r<6; r++) {
