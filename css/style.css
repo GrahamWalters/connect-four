@@ -68,6 +68,10 @@ body {
   text-align: left;
 }
 
+#time-up {
+  display: none;
+}
+
 .rotate {
   -webkit-transform: rotate(180deg);
      -moz-transform: rotate(180deg);

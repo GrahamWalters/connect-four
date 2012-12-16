@@ -109,7 +109,11 @@ function timer() {
     $('#timer').html('Move before: <strong>' + (count%60) + '</strong> seconds');
     if (count <= 0) {
         clearInterval(counter);
-        // out of time error
+        if (turn == 'P1')
+          turn = 'P2';
+        else 
+          turn = 'P1';
+        finishGame();
         return false;
     }
 }
@@ -399,10 +403,16 @@ function finishGame() {
   $('#sidebar').css('display','none');
   $('#end-screen').css('display','block');
 
+  if(count == 0)
+    $('#time-up').css('display', 'block');
+  else
+    $('#time-up').css('display', 'none');
+
   if (turn == 'P1') {
     P1wins ++;
-    $('#winner').html('Player 1 Wins!');
-    $('#loser').html('Player 2 Loses!');
+    $('#time-up').find('.span8').html('<h2 style="margin-bottom:0;">Player 2 ran out of time!</h2>');
+    $('#winner').text('Player 1 Wins!');
+    $('#loser').text('Player 2 Loses!');
     $('#winner-img').attr('src', '/img/avatars/avatar'+P1avatar+'.png');
     $('#loser-img').attr('src', '/img/avatars/avatar'+P2avatar+'.png');
     $('#winner-stats').html('Player 1 has won <strong>'+P1wins+'</strong> '+(P1wins>1 || P1wins<1 ? 'times.' : 'time.'));
@@ -410,8 +420,9 @@ function finishGame() {
             
   } else {
     P2wins ++;
-    $('#winner').html('Player 2 Wins!');
-    $('#loser').html('Player 1 Loses!');
+    $('#time-up').find('.span8').html('<h2 style="margin-bottom:0;">Player 2 ran out of time!</h2>');
+    $('#winner').text('Player 2 Wins!');
+    $('#loser').text('Player 1 Loses!');
     $('#winner-img').attr('src', '/img/avatars/avatar'+P2avatar+'.png');
     $('#loser-img').attr('src', '/img/avatars/avatar'+P1avatar+'.png');
     $('#winner-stats').html('Player 2 has won <strong>'+P2wins+'</strong> '+(P2wins>1 || P2wins<1 ? 'times.' : 'time.'));
