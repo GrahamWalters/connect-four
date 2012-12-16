@@ -201,6 +201,19 @@
       </div>
     </div>
 
+    <!-- Error Modal -->
+    <div id="error-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="errorModalLabel" aria-hidden="true">
+      <div class="modal-header">
+        <h3 id="errorModalLabel">Game Over</h3>
+      </div>
+      <div id="error-body" class="modal-body">
+      </div>
+      <div class="modal-footer">
+        <a href="#" class="btn btn-primary" aria-hidden="true" onclick="newGame(); $('#error-modal').modal('hide');">New Game</a>
+        <button id="popover-menu3" class="btn btn-primary" aria-hidden="false" type="button" rel="popover" title="Warning!" data-content="This will reset your game stats. <a href='#' class='btn btn-block btn-primary' onclick='$(&quot;#popover-menu2&quot;).popover(&quot;hide&quot;); startScreen(); $('#error-modal').modal('hide');'>Continue</a>" data-html="true">Main Menu</button>
+      </div>
+    </div>
+
     <!-- Help Modal -->
     <div id="Help" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="helpModalLabel" aria-hidden="true">
       <div class="modal-header">

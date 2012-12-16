@@ -279,8 +279,11 @@ function drop(r, c) {
       count = 20;
     }
   }
-  if (moves == 7*6)
-    alert('out of moves');
+  if (moves == 7*6) {
+    $('#errorModalLabel').text('Game Over!');
+    $('#error-body').html('<p>Nether player wins...</p>');
+    $('#error-modal').modal('show');
+  } 
 }
 
 /* 
@@ -413,6 +416,7 @@ $(document).ready(function() {
   $('#end-screen').css('display','none');
   $('#popover-menu1').popover();
   $('#popover-menu2').popover();
+  $('#popover-menu3').popover();
 });
 $(window).resize(function() {
   $('#play-screen').css('max-width', $(window).height());

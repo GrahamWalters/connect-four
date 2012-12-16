@@ -64,6 +64,10 @@ body {
   display: none;
 }
 
+.popover-inner {
+  text-align: left;
+}
+
 .rotate {
   -webkit-transform: rotate(180deg);
      -moz-transform: rotate(180deg);
