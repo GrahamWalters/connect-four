@@ -280,9 +280,13 @@ function drop(r, c) {
     }
   }
   if (moves == 7*6) {
-    $('#errorModalLabel').text('Game Over!');
-    $('#error-body').html('<p>Nether player wins...</p>');
-    $('#error-modal').modal('show');
+      $('#errorModalLabel').text('Game Over!');
+      $('#error-body').html('<p>Nether player wins...</p>');
+      $('#error-footer').html('<a href="#" class="btn btn-primary" aria-hidden="true" onclick="newGame(); $(\'#error-modal\').modal(\'hide\');">New Game</a>'+
+        '<button id="popover-menu3" class="btn btn-primary" aria-hidden="false" type="button" rel="popover" title="Warning!" onclick="fixErrorPop();" data-content="1.2.3." data-html="true">Main Menu</button>'
+      );
+      $('#error-modal').modal('show');
+      $('#popover-menu3').popover();
   } 
 }
 
@@ -404,6 +408,14 @@ function startScreen() {
   $('#end-screen').css('display','none');
 }
 
+/* 
+ * Error popover hack!
+ */
+function fixErrorPop() {
+  window.setTimeout(function() {
+    $('#error-footer').find('.popover').find('.popover-inner').find('.popover-content').html('This will reset your game stats. <a href="#" class="btn btn-block btn-primary" onclick="$(\'#popover-menu3\').popover(\'hide\'); startScreen(); $(\'#error-modal\').modal(\'hide\');">Continue</a>')
+  }, 100);
+}
 
 /* 
  * Comment
@@ -416,7 +428,6 @@ $(document).ready(function() {
   $('#end-screen').css('display','none');
   $('#popover-menu1').popover();
   $('#popover-menu2').popover();
-  $('#popover-menu3').popover();
 });
 $(window).resize(function() {
   $('#play-screen').css('max-width', $(window).height());
