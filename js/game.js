@@ -65,7 +65,7 @@ function toggleMusic() {
  */
 function toggleAutoRotate() {
   if (autoRotate) {
-    $('.p2-start').removeClass('rotate');
+    $('#p2-start').removeClass('rotate');
     $('#play-screen').removeClass('rotate');
     $('#sidebar').removeClass('rotate');
     autoRotate = false;
