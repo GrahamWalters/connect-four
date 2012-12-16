@@ -249,7 +249,7 @@ function drop(r, c) {
         $('#questionAvatar').attr('src', '/img/avatars/avatar'+P2avatar+'.png');
         $('#questionPlayer').html('Player 2');
       }
-      $('#questionNumbers').html(numbers[0]+' + '+numbers[1]+' + '+numbers[2]+' + '+numbers[3]+' =');
+      $('#questionNumbers').text(numbers[0]+' + '+numbers[1]+' + '+numbers[2]+' + '+numbers[3]+' =');
 
 
       clearInterval(counter);
@@ -368,6 +368,25 @@ function checkAnswer() {
     $('#questionAnswer').val('');
     $('#questionAnswer').focus();
   }
+}
+
+/* 
+ * Check if the 
+ */
+function giveAnswer() {
+  $('#question').modal('hide');
+  $('#errorModalLabel').text('Game Over!');
+  $('#error-body').html('<div class="input-prepend">'+
+      '<span class="add-on">'+numbers[0]+' + '+numbers[1]+' + '+numbers[2]+' + '+numbers[3]+' ='+'</span>'+
+      '<input class="span1" disabled value="'+(numbers[0]+numbers[1]+numbers[2]+numbers[3])+'" type="text">'+
+    '</div>'+
+    '<p>Nether player wins...</p>'
+    );
+  $('#error-footer').html('<a href="#" class="btn btn-primary" aria-hidden="true" onclick="newGame(); $(\'#error-modal\').modal(\'hide\');">New Game</a>'+
+    '<button id="popover-menu3" class="btn btn-primary" aria-hidden="false" type="button" rel="popover" title="Warning!" onclick="fixErrorPop();" data-content="1.2.3." data-html="true">Main Menu</button>'
+  );
+  $('#error-modal').modal('show');
+  $('#popover-menu3').popover();
 }
 
 /* 
