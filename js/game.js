@@ -65,8 +65,12 @@ function toggleMusic() {
  */
 function toggleAutoRotate() {
   if (autoRotate) {
+    $('.p2-start').removeClass('rotate');
+    $('#play-screen').removeClass('rotate');
+    $('#sidebar').removeClass('rotate');
     autoRotate = false;
   } else {
+    $('#p2-start').addClass('rotate');
     autoRotate = true;
   }
   $(document).find('.rotate-toggle').toggleClass('btn-inverse');
