@@ -228,9 +228,11 @@ function drop(r, c) {
     /* IF 4 IN A LINE */
     if (line()) {
       if (turn == 'P1') {
-        $('#questionModalLabel').html('Player 1, answer the following question:');
+        $('#questionAvatar').attr('src', '/img/avatars/avatar'+P1avatar+'.png');
+        $('#questionPlayer').html('Player 1');
       } else {
-        $('#questionModalLabel').html('Player 2, answer the following question:');
+        $('#questionAvatar').attr('src', '/img/avatars/avatar'+P2avatar+'.png');
+        $('#questionPlayer').html('Player 2');
       }
       $('#questionNumbers').html(numbers[0]+' + '+numbers[1]+' + '+numbers[2]+' + '+numbers[3]+' =');
 
@@ -241,6 +243,9 @@ function drop(r, c) {
         backdrop: 'static'
       });
       $('#question').modal('show');
+      window.setTimeout(function(){
+        $('#answer').focus();
+      }, 1500);
     } else {
       if (turn == 'P1') {
         if (music == true)
@@ -326,13 +331,16 @@ function checkAnswer() {
     window.setTimeout(finishGame, 1500);
   } else {
     if (turn == 'P1') {
-      $('#questionModalLabel').html('Player 2, answer the following question:');
+      $('#questionAvatar').attr('src', '/img/avatars/avatar'+P2avatar+'.png');
+      $('#questionPlayer').html('Player 2');
       turn = 'P2';
     } else {
-      $('#questionModalLabel').html('Player 1, answer the following question:');
+      $('#questionAvatar').attr('src', '/img/avatars/avatar'+P1avatar+'.png');
+      $('#questionPlayer').html('Player 1');
       turn = 'P1';
     }
     $('#answer').val('');
+    $('#answer').focus();
   }
 }
 

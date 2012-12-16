@@ -183,14 +183,21 @@
         <h3 id="questionModalLabel">Question</h3>
       </div>
       <div id="question-body" class="modal-body">
-        <p>Sum the following numbers...</p>
-        <div class="input-prepend">
-          <span class="add-on" id="questionNumbers"></span>
-          <input class="span1" id="answer" type="text">
-        </div>
+        <div class="media">
+          <img class="media-object pull-left" width="64px" id="questionAvatar" src="/img/avatars/avatar1.png">
+          <div class="media-body">
+            <p class="media-heading"><strong id="questionPlayer">Player 1,</strong> answer the following...</p>
+              <div class="input-prepend">
+                <span class="add-on" id="questionNumbers"></span>
+                <input class="span1" id="questionAnswer" type="text">
+              </div>
+          </div>
+      </div>
+
       </div>
       <div class="modal-footer">
         <button class="btn btn-primary" aria-hidden="true" onclick="checkAnswer();">Enter</button>
+        <button class="btn btn-warning" aria-hidden="true" onclick="giveAnswer();">Give Up?</button>
       </div>
     </div>
 
