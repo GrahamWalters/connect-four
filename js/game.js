@@ -293,6 +293,10 @@ function drop(r, c) {
       $('#error-footer').html('<a href="#" class="btn btn-primary" aria-hidden="true" onclick="newGame(); $(\'#error-modal\').modal(\'hide\');">New Game</a>'+
         '<button id="popover-menu3" class="btn btn-primary" aria-hidden="false" type="button" rel="popover" title="Warning!" onclick="fixErrorPop();" data-content="1.2.3." data-html="true">Main Menu</button>'
       );
+      $('#error-modal').modal({
+        keyboard: false,
+        backdrop: 'static'
+      });
       $('#error-modal').modal('show');
       $('#popover-menu3').popover();
   } 
@@ -389,6 +393,10 @@ function giveAnswer() {
   $('#error-footer').html('<a href="#" class="btn btn-primary" aria-hidden="true" onclick="newGame(); $(\'#error-modal\').modal(\'hide\');">New Game</a>'+
     '<button id="popover-menu3" class="btn btn-primary" aria-hidden="false" type="button" rel="popover" title="Warning!" onclick="fixErrorPop();" data-content="1.2.3." data-html="true">Main Menu</button>'
   );
+  $('#error-modal').modal({
+    keyboard: false,
+    backdrop: 'static'
+  });
   $('#error-modal').modal('show');
   $('#popover-menu3').popover();
 }
